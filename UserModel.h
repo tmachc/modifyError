@@ -8,21 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum{
-    UserSex_Man,
-    UserSex_Womam
-}UserSex;
+typedef NS_ENUM(NSUInteger, UserSex) {
+    UserSexMan,
+    UserSexWoman
+};
 
 @interface UserModel : NSObject
 
+@property (nonatomic, readonly, copy) NSString *name;
+@property (nonatomic, readonly, assign) NSInteger age;
+@property (nonatomic, readonly, assign) UserSex sex;
 
-@property(nonatomic, strong) NSString *name;
-@property (assign, nonatomic) int age;
-@property (nonatomic, assign) UserSex sex;
-
--(id)initUserModelWithUserName: (NSString*)name withAge:(int)age;
-
-
--(void)doLogIn;
+- (instancetype)initWithName:(NSString *)name
+                         age:(int)age
+                         sex:(UserSex)sex;
++ (instancetype)userWithName:(NSString *)name
+                         age:(int)age
+                         sex:(UserSex)sex;
 
 @end
